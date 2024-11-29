@@ -1,0 +1,1182 @@
+﻿:root {
+    --nav-heith: 9vh;
+    --backgroudpagina: rgb(20, 20, 20);
+}
+
+* {
+    text-decoration: none;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.cs-container-principal {
+    cursor: default;
+    background: lime;
+    height: 100vh;
+}
+
+.cs-container-nav {
+    height: var(--nav-heith);
+    background: rgb(25, 25, 25);
+    box-shadow: 0vh 0.7vh 1.5vh rgba(0, 0, 0, 0.872);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2vh;
+    padding-right: 2vh;
+}
+
+.cs-container-left-section {
+    height: var(--nav-heith);
+}
+
+.cs-container-left-section {
+    display: flex;
+    align-items: center;
+    gap: 1.9vh;
+}
+
+/*estilos de la cs-marca*/
+.cs-marca {
+    cursor: pointer;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.582);
+    background: #222 -webkit-gradient(linear, left top, right top, from(#222), to(#222), color-stop(0.5, #fff)) 0 0 no-repeat;
+    background-image: -webkit-linear-gradient(-40deg, transparent 0%, transparent 40%, #fff 50%, transparent 60%, transparent 100%);
+    background-clip: text;
+    background-size: 50px;
+    animation: zezzz;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes zezzz {
+
+    0%,
+    10% {
+        background-position: -200px;
+    }
+
+    20% {
+        background-position: top left;
+    }
+
+    100% {
+        background-position: 200px;
+    }
+}
+
+/*estilos para el boton de mostrar y cocultar menu*/
+.cs-menuButton {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 13%;
+    color: #ffffff;
+    width: 3.5em;
+    height: 2.5em;
+    transition: all .3s;
+}
+
+.cs-input[type="checkbox"] {
+    appearance: none;
+    display: none;
+    visibility: hidden;
+}
+
+.cs-menuButton span {
+    width: 4vh;
+    height: 0.44vh;
+    background: #fffcfc;
+    transition: 0.3s ease;
+}
+
+.cs-input[type]:checked~span.cs-top {
+    transform: translateY(290%)rotate(45deg);
+    width: 4vh;
+}
+
+.cs-input[type]:checked~span.cs-bot {
+    transform: translateY(-270%) rotate(-45deg);
+    width: 4vh;
+}
+
+.cs-input[type]:checked~span.cs-mid {
+    transform: translateX(-20px);
+    opacity: 0;
+}
+
+/**/
+
+.cs-container-secundario {
+    display: flex;
+    position: relative;
+    height: calc(100vh - var(--nav-heith));
+}
+
+.cs-container-menu {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 0vh;
+}
+
+.cs-container-menu-activo {
+    animation: menu-activo 0.5s ease-in-out;
+    width: 40vh;
+}
+
+.cs-container-menu-inactivo {
+    animation: menu-inactivo 0.5s ease-in-out;
+    width: 0vh;
+}
+
+@keyframes menu-activo {
+    0% {
+        width: 0vh;
+    }
+
+    100% {
+        width: 40vh;
+    }
+}
+
+@keyframes menu-inactivo {
+    0% {
+        width: 40vh;
+    }
+
+    100% {
+        width: 0vh;
+    }
+}
+
+.cs-container-menu-options {
+    display: flex;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    flex-direction: column;
+    height: 90%;
+    background: #202020;
+}
+
+.cs-menu-options-option-group {
+    list-style: none;
+    text-decoration: none;
+    text-decoration: none;
+    display: flex;
+    padding: 2vh;
+    align-items: center;
+    gap: 2vh;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+
+.cs-menu-options-option-group:hover {
+    background: rgba(0, 255, 21, 0.137);
+    color: rgb(0, 255, 21);
+    box-shadow: 0 1px 0 rgba(0, 255, 21, 0.329) inset, 0 -1px 0 rgba(0, 255, 21, 0.329) inset;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+
+.cs-menu-options-option-group:hover~.cs-container-categorias,
+.cs-container-categorias:hover {
+    max-height: 9999px;
+    display: block;
+    transform: scaleY(1);
+    animation: showAnimation 0.5s ease-in-out;
+    transition: max-height 2s ease-in-out;
+}
+
+.cs-container-categorias {
+    display: flex;
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    transform: scaleY(0);
+    transform-origin: 50% 0%;
+    transition: max-height 0.5s ease-out;
+    animation: hideAnimation 0.4s ease-out;
+}
+
+@keyframes showAnimation {
+    0% {
+        transform: scaleY(0.1);
+    }
+
+    40% {
+        transform: scaleY(1.04);
+    }
+
+    60% {
+        transform: scaleY(0.98);
+    }
+
+    80% {
+        transform: scaleY(1.04);
+    }
+
+    100% {
+        transform: scaleY(0.98);
+    }
+
+    80% {
+        transform: scaleY(1.02);
+    }
+
+    100% {
+        transform: scaleY(1);
+    }
+}
+
+@keyframes hideAnimation {
+    0% {
+        transform: scaleY(1);
+    }
+
+    60% {
+        transform: scaleY(0.98);
+    }
+
+    80% {
+        transform: scaleY(1.02);
+    }
+
+    100% {
+        transform: scaleY(0);
+    }
+}
+
+.cs-submenu {
+    padding-left: 5vh;
+}
+
+.cs-container-copy {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    background: rgb(50, 50, 50);
+    color: #ffffff70;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.cs-container-vistas {
+    background: var(--backgroudpagina);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: auto;
+    flex: 1;
+    padding: 5vh;
+}
+
+
+
+/*registro de documentos*/
+
+.cs-form-doc-register {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vh;
+    flex: 1;
+    color: white;
+}
+
+#cs-form-reg-documentos {
+    flex-direction: row-reverse;
+}
+
+.cs-form-row-section {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 2vh;
+}
+
+.cs-form-doc-register-lef-section {
+    flex: 1;
+}
+
+#cs-form-doc-register-right-section {
+    flex: 2;
+    position: relative;
+    flex-basis: 40vh;
+}
+
+.cs-form-doc-register-group {
+    display: flex;
+    flex-direction: row;
+    /* Asegura que los elementos estén alineados en fila */
+    width: auto;
+    height: auto;
+    align-items: stretch;
+    /* Los elementos se estirarán para ocupar la misma altura */
+}
+
+.cs-form-doc-register-group .fas {
+    display: flex;
+    align-items: center;
+    /* Centrar el contenido verticalmente */
+    background: linear-gradient(rgb(22, 22, 22), #222);
+    padding: 2vh;
+    border: 0.1vh solid #444;
+    height: auto;
+    /* Deja que la altura se ajuste automáticamente */
+}
+
+.cs-form-doc-register-group .input {
+    outline: none;
+    font-size: 16px;
+    color: #868686;
+    padding: 1vh;
+    border-radius: 0 5px 5px 0;
+    border: 0.1vh solid #444;
+    caret-color: lime;
+    background: linear-gradient(rgb(22, 22, 22), #222);
+    flex-grow: 1;
+    /* Se adapta al espacio disponible */
+    height: auto;
+    /* Ajuste automático de la altura */
+}
+
+.cs-form-doc-register-group .input option {
+    background: rgb(22, 22, 22);
+}
+
+
+.cs-form-doc-register-group .input:focus {
+    color: lime;
+    box-shadow: 0 0 5px rgba(0, 255, 0, .2), inset 0 0 5px rgba(0, 255, 0, .1);
+    background: linear-gradient(rgb(22, 22, 22), #222922);
+    animation: glow .8s ease-out infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        border-color: #2a7c2a;
+        box-shadow: 0 0 5px rgba(0, 255, 0, .2), inset 0 0 5px rgba(0, 0, 0, .1);
+    }
+
+    100% {
+        border-color: #6f6;
+        box-shadow: 0 0 20px rgba(0, 255, 0, .6), inset 0 0 10px rgba(0, 255, 0, .4);
+    }
+}
+
+#descripcion {
+    height: 37vh;
+    resize: none;
+}
+
+#icon-descripcion {
+    align-items: center;
+}
+
+.cs-form-doc-register-lef-section-btns {
+    display: flex;
+    flex: 1;
+    gap: 3vh;
+}
+
+.cs-btns-forms-register {
+    all: unset;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: flex 0.3s ease;
+    overflow: hidden;
+    height: 6vh;
+    padding: 0.15vh;
+    background: #000;
+    position: relative;
+}
+
+.cs-btns-forms-register::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #fb0094, #00f, #0f0, #ff0, #f00, #fb0094, #00f, #0f0, #ff0, #f00);
+    background-size: 400%;
+    opacity: 0;
+    transition: .5s;
+    animation: animate 20s linear infinite;
+}
+
+.cs-btns-forms-register:hover::before,
+.cs-btns-forms-register:hover::after {
+    opacity: 1;
+}
+
+@keyframes animate {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 300% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.cs-btns-forms-register span {
+    display: flex;
+    background: #0c0c0c;
+    color: rgba(255, 255, 255, 0.603);
+    align-items: center;
+    justify-content: center;
+    transition: .5s;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+}
+
+.cs-btns-forms-register span:hover {
+    letter-spacing: 0.6vh;
+    font-weight: bold;
+}
+
+.cs-btns-forms-register #cs-enviar:hover {
+    color: lime;
+}
+
+.cs-btns-forms-register #cs-cancelar:hover {
+    color: red;
+}
+
+/* From Uiverse.io by Cksunandh */
+.file-upload-container {
+    display: flex;
+    flex: 1;
+}
+
+.file-upload {
+    flex: 1;
+    display: flex;
+    position: relative;
+    border: 2px dashed lime;
+    border-radius: 10px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgb(22, 22, 22), #222);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.file-upload:hover {
+    background-color: #e2e6ea;
+}
+
+.file-input {
+    cursor: pointer;
+    display: none;
+}
+
+.file-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.upload-icon {
+    font-size: 50px;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.file-upload p {
+    margin: 0;
+    font-size: 16px;
+    color: #6c757d;
+}
+
+.file-upload.dragover {
+    background-color: #007bff;
+    color: white;
+}
+
+/*aplicado para asp cualquier modificacion revisar y volver a cargar el css en la aplicacion asp*/
+/*estilos para diseño de tablas listo
+<table class="cs-table"><thead><tr><th>Nombre</th><th>Acciones</th></tr></thead><tbody><tr><td>Juan</td><td class="cs-btns"><a class="cs-edit" href="#">Edit</a><a class="cs-info" href="#">Details</a><a class="cs-delete" href="#">Delete</a></td></tr></tbody></table>
+*/
+.dt-empty-footer {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: auto;
+    width: auto;
+}
+
+.dt-layout-table {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    background: lime;
+}
+
+.dt-layout-full {
+    position: relative;
+    display: flex;
+    overflow: auto;
+    width: auto;
+}
+
+.cs-table {
+    flex: 1;
+    border-collapse: collapse;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+}
+
+.cs-table th,
+.cs-table td {
+    position: relative;
+    padding: 15px;
+    text-align: left;
+}
+
+.cs-table thead {
+    background-color: #00718d;
+    color: white;
+}
+
+.cs-table thead th {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.cs-table tbody tr {
+    background-color: #dadada;
+    color: rgb(0, 0, 0);
+}
+
+.cs-table tbody tr:nth-child(even) {
+    background-color: #ececec;
+}
+
+.cs-table tbody tr:hover {
+    background-color: #036c96;
+}
+
+.cs-table a {
+    padding: 1vh 2vh;
+    border-radius: 10px;
+    color: black;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.cs-table a:hover {
+    scale: 1.1;
+}
+
+.cs-table a:active {
+    scale: 0.9;
+}
+
+/*.cs-table .cs-btns {
+        display: flex;
+        gap: 1.5vh;
+        justify-content: center;
+        align-items: center;
+    }*/
+.cs-table-btns {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    gap: 1.5vh;
+    justify-content: center;
+    align-items: center;
+}
+
+/*.cs-table .cs-btns .cs-edit:hover,
+.cs-table .cs-btns .cs-info:hover,
+.cs-table .cs-btns .cs-delete:hover {
+    letter-spacing: 0.2vh;
+}*/
+
+.cs-table-edit {
+    background: orange;
+    font-weight: bold;
+}
+
+.cs-table-info {
+    background: lime;
+    font-weight: bold;
+}
+
+.cs-table-delete {
+    background: red;
+    font-weight: bold;
+}
+
+/*pagina de detalles*/
+.cs-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4vh;
+}
+
+.cs-details h2 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    color: white;
+}
+
+.cs-details hr {
+    display: flex;
+    width: 100%;
+}
+
+.cs-info-details {
+    all: unset;
+    position: relative;
+    display: flex;
+    height: auto;
+    flex: 1;
+    overflow: hidden;
+}
+
+.cs-info-details .cs-row {
+    color: white;
+    position: relative;
+    display: flex;
+    height: auto;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.cs-row th,
+.cs-row td {
+    all: unset;
+    align-items: center;
+    position: relative;
+    display: flex;
+    padding: 1.5vh;
+}
+
+.cs-row th {
+    flex: 1;
+}
+
+.cs-row td {
+    min-width: 50vh;
+    flex: 4;
+}
+
+.cs-btns-details {
+    display: flex;
+    gap: 2vh;
+}
+
+.cs-container-doc {
+    display: flex;
+    background: #00718d;
+    height: 100vh;
+}
+
+/* Estilos para pantallas de celulares */
+@media only screen and (max-width: 767px) {
+
+    .cs-container-menu {
+        position: absolute;
+        height: 100%;
+        z-index: 100;
+    }
+
+    #cs-form-doc-register-right-section {
+        height: 60vh;
+    }
+}
+
+
+/*clases de colores*/
+.cs-lime,
+.cs-red,
+.cs-orange,
+.cs-springgreen,
+.cs-aqua,
+.cs-darkcyan {
+    font-weight: bold;
+}
+
+.cs-lime {
+    color: lime;
+}
+
+.cs-red {
+    color: red;
+}
+
+.cs-orange {
+    color: orange;
+}
+
+.cs-springgreen {
+    color: springgreen;
+}
+
+.cs-aqua {
+    color: aqua;
+}
+
+.cs-darkcyan {
+    color: darkcyan;
+}
+
+.dt-length label {
+    display: flex;
+}
+
+.dt-length label select {
+    display: flex;
+    margin: 0px 10px;
+    padding: 2px 5px;
+}
+
+.dt-layout-row {
+    letter-spacing: 1.5px;
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+.dt-layout-start,
+.dt-layout-end {
+    display: flex;
+    width: 50%;
+    padding: 10px 0px;
+    align-items: center;
+}
+
+
+.dt-layout-end {
+    justify-content: end;
+    gap: 10px;
+}
+
+.dt-paging nav {
+    display: flex;
+    gap: 10px;
+}
+
+.dt-paging-button {
+    all: unset;
+    display: flex;
+    padding: 6px 10px;
+    font-weight: bold;
+    outline: none;
+    font-size: 16px;
+    color: #868686;
+    border-radius: 5px;
+    border: 0.1vh solid #444;
+    caret-color: lime;
+    background: linear-gradient(rgb(22, 22, 22), #222);
+    flex-grow: 1;
+    height: auto;
+}
+
+.dt-paging-button:hover {
+    color: lime;
+    box-shadow: 0 0 5px rgba(0, 255, 0, .2), inset 0 0 5px rgba(0, 255, 0, .1);
+    background: linear-gradient(rgb(22, 22, 22), #222922);
+    animation: glow .8s ease-out infinite alternate;
+}
+
+.dt-search {
+    display: flex;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.dt-search label {
+    font-size: 1.2rem;
+}
+
+.dt-search input {
+    display: flex;
+    padding: 6px 10px;
+    font-weight: bold;
+    outline: none;
+    font-size: 16px;
+    color: #868686;
+    border-radius: 5px;
+    border: 0.1vh solid #444;
+    caret-color: lime;
+    background: linear-gradient(rgb(22, 22, 22), #222);
+    flex-grow: 1;
+    height: auto;
+}
+
+.dt-length label .dt-input,
+.dt-length label .dt-input option {
+    background: rgb(22, 22, 22);
+    color: lime;
+}
+
+
+.dt-length label .dt-input:focus,
+.dt-search input:focus {
+    color: lime;
+    box-shadow: 0 0 5px rgba(0, 255, 0, .2), inset 0 0 5px rgba(0, 255, 0, .1);
+    background: linear-gradient(rgb(22, 22, 22), #222922);
+    animation: glow .8s ease-out infinite alternate;
+}
+
+.cs-btn-new-index {
+    all: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    width: 100px;
+    margin: 10px 0px;
+    height: 25px;
+    color: white;
+    padding: 10px;
+    background: green;
+    transition: .5s;
+    border-radius: 10px;
+}
+
+.cs-btn-new-index:hover {
+    background: #0f0;
+    color: black;
+    border-radius: 10px 0px 10px 0px;
+    scale: 1.05;
+}
+
+.cs-title-pag {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.cs-home {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+.cs-title-home {
+    all: unset;
+    font-size: 40px;
+    background: linear-gradient(165deg, rgb(50, 0, 0), red);
+    background-clip: text;
+    color: rgba(0, 0, 0, 0);
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 0.5px white;
+    transition: .3s;
+}
+
+.cs-title-home:hover {
+    scale: 1.1;
+}
+
+.cs-home a {
+    color: darkorange;
+}
+
+/*botones para login y registrar*/
+.navbar-nav {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    flex: 1;
+    gap: 20px;
+    font-weight: bold;
+}
+
+.navbar-nav * {
+    all: unset;
+}
+
+.navbar-nav li {
+    cursor: pointer;
+    background: linear-gradient(165deg, rgb(0, 82, 14), rgb(0, 255, 13));
+    background-clip: text;
+    color: rgba(0, 0, 0, 0);
+    transition: .3s;
+}
+
+.navbar-nav li:hover {
+    scale: 1.1;
+    background: linear-gradient(165deg, rgb(0, 37, 138), rgb(48, 207, 255));
+    background-clip: text;
+    color: rgba(0, 0, 0, 0);
+}
+/*diseño para el login*/
+/* From Uiverse.io by yashasvi9199 */
+.login-form-cs {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 2em;
+    background-color: #171717;
+    border-radius: 25px;
+    transition: 0.4s ease-in-out;
+}
+
+.login-card-cs {
+    background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+    border-radius: 22px;
+    transition: all 0.3s;
+    max-width: 500px;
+}
+
+.login-card2-cs {
+    border-radius: 0;
+    transition: all 0.2s;
+    width: 100%;
+}
+
+.login-card2-cs:hover {
+    transform: scale(0.98);
+    border-radius: 20px;
+}
+
+.login-card-cs:hover {
+    box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.3);
+}
+
+#login-heading-cs {
+    text-align: center;
+    margin: 2em;
+    color: rgb(255, 255, 255);
+    font-size: 1.2em;
+}
+
+.login-field-cs {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: #171717;
+    box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+}
+
+.login-input-icon-cs {
+    height: 1.3em;
+    width: 1.3em;
+    fill: white;
+}
+
+.login-input-field-cs {
+    all: unset;
+    background: none;
+    border-radius: 10px;
+    padding: 0.6em;
+    width: 100%;
+    color: #d3d3d3;
+}
+
+.login-input-field-cs option {
+    all: unset;
+    background: none;
+    border-radius: 10px;
+    padding: 0.6em;
+    width: 100%;
+    background: #0c0c0c;
+}
+
+.login-input-field-cs:focus {
+    color: lime;
+    font-weight: bold;
+}
+
+.login-form-cs .login-btn-cs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+
+.login-button1-cs {
+    padding: 1em .5em;
+    border: none;
+    outline: none;
+    transition: 0.4s ease-in-out;
+    background-color: #252525;
+    color: white;
+}
+
+
+.login-button-cs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: .9em;
+    padding: 0.5em;
+    padding-left: 2.3em;
+    padding-right: 2.3em;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    transition: 0.4s ease-in-out;
+    background-color: #252525;
+    color: white;
+}
+
+/*clases hover para reutilizar*/
+.hover-lime:hover {
+    background: lime;
+    color: black;
+    font-weight: bold;
+}
+.hover-red:hover {
+    background: red;
+    color: white;
+    font-weight: bold;
+}
+.hover-orange:hover {
+    background: orange;
+    color: black;
+    font-weight: bold;
+}
+.hover-purple:hover {
+    background: purple;
+    color: white;
+    font-weight: bold;
+}
+.hover-cyan:hover {
+    background: cyan;
+    color: black;
+    font-weight: bold;
+}
+
+/*estilos para personalizar el perfil*/
+.cs-perfil-container{
+    all: unset;
+    flex-direction: column;
+    display: flex;
+}
+.cs-opciones-perfil{
+    all: unset;
+    display: flex;
+}
+
+.cs-opciones-perfil ul {
+    all: unset;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.cs-opciones-perfil ul li {
+    all: unset;
+    font-weight: bold;
+}
+.cs-opciones-perfil ul li a {
+    all: unset;
+    color: white;
+    font-weight: bold;
+    transition: 1s;
+}
+.cs-opciones-perfil ul li a:hover {
+    color: lime;
+}
+.cs-render-perfil{
+    all: unset;
+    display: flex;
+    flex-direction: column;
+}
+.cs-render-perfil .row{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.cs-render-perfil .row .col-md-6 form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-weight: bold;
+}
+
+.cs-render-perfil .row .col-md-6 form input {
+    all: unset;
+    padding: 10px;
+    border-radius: 5px;
+    background: white;
+    color: black;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cs-render-perfil .row .col-md-6 form input:focus {
+    border-radius: 0px;
+    background: rgb(22, 22, 22);
+    color: darkorange;
+    border: 1px solid lime;
+}
+
+.cs-render-perfil .row .col-md-6 form button {
+    all: unset;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px;
+    background: #00718d;
+    color: white;
+    flex-direction: column;
+    gap: 20px;
+    transition: .3s;
+}
+
+.cs-render-perfil .row .col-md-6 form button:hover {
+    border-radius: 20px 0px;
+    background: lime;
+    color: black;
+}
+
+.container-login-cs-identity{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
